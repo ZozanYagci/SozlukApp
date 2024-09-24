@@ -25,7 +25,8 @@ namespace SozlukApp.Infrastructure.Persistence.EntityConfigurations.EntryComment
 
             builder.HasOne(i => i.CreatedUser)
                 .WithMany(i => i.EntryCommentFavorites)
-                .HasForeignKey(i => i.CreatedById);
+                .HasForeignKey(i => i.CreatedById)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

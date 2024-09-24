@@ -13,6 +13,11 @@ namespace SozlukApp.Infrastructure.Persistence.Context
     {
         public const string DEFAULT_SCHEMA = "dbo";
 
+        public SozlukAppContext()
+        {
+
+        }
+
         public SozlukAppContext(DbContextOptions options) : base(options)
         {
         }
@@ -26,6 +31,17 @@ namespace SozlukApp.Infrastructure.Persistence.Context
         public DbSet<EntryCommentFavorite> EntryCommentFavorites { get; set; }
         public DbSet<EmailConfirmation> EmailConfirmations { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var connStr = "Server=.\\MSSQLSERVER1;Initial Catalog=SozlukApp;Integrated Security=true;TrustServerCertificate=True";
+                optionsBuilder.UseSqlServer(connStr, opt =>
+                {
+                    opt.EnableRetryOnFailure();
+                });
+            }
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
