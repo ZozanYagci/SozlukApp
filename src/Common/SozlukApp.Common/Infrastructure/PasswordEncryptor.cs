@@ -11,10 +11,11 @@ namespace SozlukApp.Common.Infrastructure
     {
         public static string Encrpt(string password)
         {
-            using var md5= MD5.Create();
+            //using var md5= MD5.Create();
+            using var sha256 = SHA256.Create();
 
-            byte[] inputBytes=Encoding.ASCII.GetBytes(password);
-            byte[] hashBytes= md5.ComputeHash(inputBytes);
+            byte[] inputBytes=Encoding.UTF8.GetBytes(password);
+            byte[] hashBytes= sha256.ComputeHash(inputBytes);
 
             return Convert.ToHexString(hashBytes);
         }

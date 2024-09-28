@@ -14,11 +14,11 @@ namespace SozlukApp.Infrastructure.Persistence.Repositories
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly SozlukAppContext _dbContext;
+        private readonly DbContext _dbContext;
 
         protected DbSet<TEntity> entity => _dbContext.Set<TEntity>();
 
-        public GenericRepository(SozlukAppContext dbContext)
+        public GenericRepository(DbContext dbContext)
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
         }
