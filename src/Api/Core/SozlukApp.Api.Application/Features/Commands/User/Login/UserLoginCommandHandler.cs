@@ -15,7 +15,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SozlukApp.Api.Application.Features.Commands.User
+namespace SozlukApp.Api.Application.Features.Commands.User.Login
 {
     public class UserLoginCommandHandler : IRequestHandler<LoginUserCommand, LoginUserViewModel>
     {
@@ -33,18 +33,18 @@ namespace SozlukApp.Api.Application.Features.Commands.User
         public async Task<LoginUserViewModel> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
             var dbUser = await _userRepository.GetSingleAsync(i => i.EmailAddress == request.EmailAddress);
-            if(dbUser == null)
-            
+            if (dbUser == null)
+
                 throw new DatabaseValidationException("User not found!");
 
-                var pass=PasswordEncryptor.Encrpt(request.Password);
+            var pass = PasswordEncryptor.Encrpt(request.Password);
             if (dbUser.Password != pass)
                 throw new DatabaseValidationException("Password is wrong!");
 
             if (!dbUser.EmailConfirmed)
                 throw new DatabaseValidationException("Email address is not confirmed yet!");
 
-            var result=_mapper.Map<LoginUserViewModel>(dbUser);
+            var result = _mapper.Map<LoginUserViewModel>(dbUser);
 
             var claims = new Claim[]
             {
@@ -57,18 +57,18 @@ namespace SozlukApp.Api.Application.Features.Commands.User
             result.Token = GenerateToken(claims);
 
             return result;
-            
+
         }
 
         private string GenerateToken(Claim[] claims)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AuthConfig:Secret"]));
-            var creds= new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var expiry = DateTime.Now.AddDays(10);
 
             var token = new JwtSecurityToken(claims: claims, expires: expiry, signingCredentials: creds, notBefore: DateTime.Now);
 
-            return new JwtSecurityTokenHandler().WriteToken(token); 
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
