@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SozlukApp.Api.Application.Mapping
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -20,7 +20,12 @@ namespace SozlukApp.Api.Application.Mapping
             CreateMap<CreateUserCommand, User>();
 
             CreateMap<UpdateUserCommand, User>();
-                
+
+            CreateMap<CreateEntryCommand, Entry>()
+                .ReverseMap();
+
+            CreateMap<CreateEntryCommentCommand, EntryComment>()    
+                .ReverseMap();
         }
     }
 }
