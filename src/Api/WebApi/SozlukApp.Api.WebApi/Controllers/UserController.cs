@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Commands.User.ConfirmEmail;
+using SozlukApp.Api.Application.Features.Queries.GetUserDetail;
 using SozlukApp.Common.Events.User;
 using SozlukApp.Common.Models.RequestModels;
 
@@ -16,6 +17,24 @@ namespace SozlukApp.Api.WebApi.Controllers
         public UserController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet("{id}")]
+
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var user = await _mediator.Send(new GetUserDetailQuery(id));
+
+            return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("UserName/{userName}")]
+        public async Task<IActionResult> GetByUserName(string userName)
+        {
+            var user = await _mediator.Send(new GetUserDetailQuery(Guid.Empty, userName));
+
+            return Ok(user);
         }
 
         [HttpPost]
