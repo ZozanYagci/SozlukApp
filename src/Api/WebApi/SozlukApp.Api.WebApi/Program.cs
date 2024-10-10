@@ -1,7 +1,12 @@
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
+using Microsoft.Identity.Client;
+using Microsoft.Identity.Client.Advanced;
+using Microsoft.Identity.Client.Extensibility;
 using SozlukApp.Api.Application.Extensions;
 using SozlukApp.Api.WebApi.Infrastructure.Extensions;
 using SozlukApp.Infrastructure.Persistence.Extensions;
+using System.Threading.Tasks.Dataflow;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +29,16 @@ builder.Services.ConfigureAuth(builder.Configuration);
 builder.Services.AddApplicationRegistration();
 builder.Services.AddInfrastructureRegistration(builder.Configuration);
 
+//Add Cors
+builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+{
+    builder.AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader();
+
+
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,9 +52,12 @@ app.UseHttpsRedirection();
 
 app.ConfigureExceptionHandling(app.Environment.IsDevelopment());
 
+
 app.UseAuthentication();
 app.UseAuthorization();
 
+
+app.UseCors("MyPolicy");
 app.MapControllers();
 
 app.Run();
