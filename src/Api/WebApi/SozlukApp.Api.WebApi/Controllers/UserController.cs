@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SozlukApp.Api.Application.Features.Commands.User.ConfirmEmail;
@@ -39,6 +40,7 @@ namespace SozlukApp.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("Login")]
+       
         public async Task<IActionResult> Login(LoginUserCommand command)
         {
             var res = await _mediator.Send(command);
@@ -46,6 +48,7 @@ namespace SozlukApp.Api.WebApi.Controllers
             return Ok(res);
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> Create(CreateUserCommand command)
         {
             var guid = await _mediator.Send(command);
@@ -54,6 +57,7 @@ namespace SozlukApp.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("Update")]
+        [Authorize]
         public async Task<IActionResult> UpdateUser(UpdateUserCommand command)
         {
             var guid = await _mediator.Send(command);
@@ -72,6 +76,7 @@ namespace SozlukApp.Api.WebApi.Controllers
 
         [HttpPost]
         [Route("ChangePassword")]
+        [Authorize]
         public async Task<IActionResult> ChangePassword(ChangeUserPasswordCommand command)
         {
             if (!command.UserId.HasValue)

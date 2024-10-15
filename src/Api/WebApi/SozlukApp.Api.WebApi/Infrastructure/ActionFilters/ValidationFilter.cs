@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
 using RabbitMQ.Client;
+using SozlukApp.Common.Infrastructure.Results;
 
 namespace SozlukApp.Api.WebApi.Infrastructure.ActionFilters
 {
@@ -13,6 +15,8 @@ namespace SozlukApp.Api.WebApi.Infrastructure.ActionFilters
                                                       .Select(x => !string.IsNullOrEmpty(x.ErrorMessage) ?
                                                       x.ErrorMessage : x.Exception?.Message)
                                                       .Distinct().ToList();
+                var result= new ValidationResponseModel(messages);
+                context.Result=new BadRequestObjectResult(result);
                 return;
             }
             await next();

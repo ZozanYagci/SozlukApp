@@ -59,8 +59,8 @@ namespace SozlukApp.WebApp.Infrastructure.Extensions
         {
             var token=localStorageService.GetItem<string>(TokenName);
 
-            if (string.IsNullOrEmpty(token))
-                token = "";
+            //if (string.IsNullOrEmpty(token))
+            //    token = "";
 
             return token;
         }
@@ -69,8 +69,8 @@ namespace SozlukApp.WebApp.Infrastructure.Extensions
         {
             var token=await localStorageService.GetItemAsync<string>(TokenName);
 
-            if (string.IsNullOrEmpty(token))
-                token = "";
+            //if (string.IsNullOrEmpty(token))
+            //    token = "";
 
             return token;
         }

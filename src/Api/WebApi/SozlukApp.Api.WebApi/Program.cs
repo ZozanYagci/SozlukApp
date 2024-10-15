@@ -1,23 +1,20 @@
 using FluentValidation.AspNetCore;
-using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
-using Microsoft.Identity.Client;
-using Microsoft.Identity.Client.Advanced;
-using Microsoft.Identity.Client.Extensibility;
 using SozlukApp.Api.Application.Extensions;
+using SozlukApp.Api.WebApi.Infrastructure.ActionFilters;
 using SozlukApp.Api.WebApi.Infrastructure.Extensions;
 using SozlukApp.Infrastructure.Persistence.Extensions;
-using System.Threading.Tasks.Dataflow;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers()
+builder.Services.AddControllers(opt => opt.Filters.Add<ValidateModelStateFilter>())
     .AddJsonOptions(opt =>
     {
         opt.JsonSerializerOptions.PropertyNamingPolicy = null;
     })
-    .AddFluentValidation();
+    .AddFluentValidation()
+    .ConfigureApiBehaviorOptions(o => o.SuppressModelStateInvalidFilter = true);
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

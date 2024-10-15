@@ -1,8 +1,10 @@
 ﻿using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Components.Authorization;
 using SozlukApp.Common.Infrastructure.Exceptions;
 using SozlukApp.Common.Infrastructure.Results;
 using SozlukApp.Common.Models.Queries;
 using SozlukApp.Common.Models.RequestModels;
+using SozlukApp.WebApp.Infrastructure.Auth;
 using SozlukApp.WebApp.Infrastructure.Extensions;
 using SozlukApp.WebApp.Infrastructure.Services.Interfaces;
 using System.Net.Http.Json;
@@ -15,11 +17,13 @@ namespace SozlukApp.WebApp.Infrastructure.Services
     {
         private readonly HttpClient _httpClient;
         private readonly ISyncLocalStorageService _syncLocalStorageService;
+        private readonly AuthenticationStateProvider _authenticationStateProvider;
 
-        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService)
+        public IdentityService(HttpClient httpClient, ISyncLocalStorageService syncLocalStorageService, AuthenticationStateProvider authenticationStateProvider)
         {
             _httpClient = httpClient;
             _syncLocalStorageService = syncLocalStorageService;
+            _authenticationStateProvider = authenticationStateProvider;
         }
 
         public bool IsLoggedIn => !string.IsNullOrEmpty(GetUserToken());
@@ -65,6 +69,8 @@ namespace SozlukApp.WebApp.Infrastructure.Services
                 _syncLocalStorageService.SetUserName(response.UserName);
                 _syncLocalStorageService.SetUserId(response.Id);
 
+                ((AuthStateProvider)_authenticationStateProvider).NotifyUserLogin(response.UserName, response.Id);
+
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", response.Token);
 
                 return true;
@@ -79,6 +85,7 @@ namespace SozlukApp.WebApp.Infrastructure.Services
             _syncLocalStorageService.RemoveItem(LocalStorageExtension.UserName);
             _syncLocalStorageService.RemoveItem(LocalStorageExtension.UserId);
 
+            ((AuthStateProvider)_authenticationStateProvider).NotifyUserLogout();
             _httpClient.DefaultRequestHeaders.Authorization = null;
         }
 

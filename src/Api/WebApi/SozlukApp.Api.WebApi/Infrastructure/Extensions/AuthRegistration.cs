@@ -21,7 +21,7 @@ namespace SozlukApp.Api.WebApi.Infrastructure.Extensions
                     {
                         ValidateIssuer = false,
                         ValidateAudience = false,
-                        ValidateLifetime = false,
+                        ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         IssuerSigningKey = signingKey
                     };
