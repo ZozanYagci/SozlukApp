@@ -5,7 +5,7 @@ SozlukApp uygulaması, siteye kayıtlı kullanıcıların yorumlarını içeren,
 
 ---
 
--Proje Onion Architecture mimarisiyle tasarlandı.
+-Proje Onion Architecture ile tasarlandı.
 
 -Backend tarafında C# dili, veritabanı olarak sql server kullanıldı.
 
