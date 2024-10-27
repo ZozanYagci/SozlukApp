@@ -1,7 +1,7 @@
 ﻿@if (identityService.IsLoggedIn)
 {
     <span class="entry-fav @(IsFavorited ? "entry-faved" : "entry-not-faved") p-3">
-        <span @onclick="( () => FavoritedClicked())">
+        <span @onclick="(() => FavoritedClicked())">
             @FavoritedCount
         </span>
     </span>

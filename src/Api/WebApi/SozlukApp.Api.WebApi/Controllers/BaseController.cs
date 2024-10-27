@@ -8,6 +8,10 @@ namespace SozlukApp.Api.WebApi.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
-        public Guid? UserId => Guid.NewGuid(); /* new Guid(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);*/
+        //public Guid? UserId => new Guid(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier)?.Value);
+        public Guid? UserId =>
+       Guid.TryParse(HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value, out var userId)
+           ? userId
+           : null;
     }
 }
