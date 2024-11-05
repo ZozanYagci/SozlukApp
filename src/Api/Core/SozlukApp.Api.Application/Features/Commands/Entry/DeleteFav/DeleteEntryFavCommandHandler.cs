@@ -20,7 +20,7 @@ namespace SozlukApp.Api.Application.Features.Commands.Entry.DeleteFav
                 obj: new DeleteEntryFavEvent()
                 {
                     EntryId = request.EntryId,
-                    CreateBy=request.UserId
+                    CreatedBy=request.UserId
                 });
 
             return await Task.FromResult(true);

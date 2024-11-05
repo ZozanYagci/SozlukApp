@@ -20,7 +20,7 @@ namespace SozlukApp.Api.Application.Features.Commands.EntryComment.CreateFav
                                                obj: new CreateEntryCommentFavEvent()
                                                {
                                                    EntryCommentId = request.EntryCommentId,
-                                                   CreateBy = request.UserId
+                                                   CreatedBy = request.UserId
                                                });
             return await Task.FromResult(true);
         }
