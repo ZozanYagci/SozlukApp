@@ -33,11 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Api.WebApi", "src
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Projections.FavoriteService", "src\Projections\SozlukApp.Projections.FavoriteService\SozlukApp.Projections.FavoriteService.csproj", "{D89EE631-2B96-4A53-87B6-5CB3CFFAB481}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Projections.UserService", "src\Projections\SozlukApp.Projections.User\SozlukApp.Projections.UserService.csproj", "{839294E9-977F-4FEC-93C9-DCFBBBD31B48}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Projections.VoteService", "src\Projections\SozlukApp.Projections.VoteService\SozlukApp.Projections.VoteService.csproj", "{88305C4E-6B1F-46FE-A52B-65F920063168}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.WebApp", "src\Clients\BlazorWeb\SozlukApp.WebApp\SozlukApp.WebApp.csproj", "{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SozlukApp.Projections.UserService", "src\Projections\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService.csproj", "{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,10 +69,6 @@ Global
 		{D89EE631-2B96-4A53-87B6-5CB3CFFAB481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D89EE631-2B96-4A53-87B6-5CB3CFFAB481}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D89EE631-2B96-4A53-87B6-5CB3CFFAB481}.Release|Any CPU.Build.0 = Release|Any CPU
-		{839294E9-977F-4FEC-93C9-DCFBBBD31B48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{839294E9-977F-4FEC-93C9-DCFBBBD31B48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{839294E9-977F-4FEC-93C9-DCFBBBD31B48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{839294E9-977F-4FEC-93C9-DCFBBBD31B48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{88305C4E-6B1F-46FE-A52B-65F920063168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88305C4E-6B1F-46FE-A52B-65F920063168}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88305C4E-6B1F-46FE-A52B-65F920063168}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -81,6 +77,10 @@ Global
 		{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,9 +100,9 @@ Global
 		{E0A08F24-22B6-488B-A8D3-9271AB056D0F} = {25779A31-57B9-4DFE-949B-73950B98320C}
 		{722ED924-AB9E-491F-A933-7DC29D04A90C} = {02ACF705-6F6C-49ED-8213-E4EEC10C88CF}
 		{D89EE631-2B96-4A53-87B6-5CB3CFFAB481} = {D735F5AF-6C39-4AAB-B8FB-231F1768A2A7}
-		{839294E9-977F-4FEC-93C9-DCFBBBD31B48} = {D735F5AF-6C39-4AAB-B8FB-231F1768A2A7}
 		{88305C4E-6B1F-46FE-A52B-65F920063168} = {D735F5AF-6C39-4AAB-B8FB-231F1768A2A7}
 		{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351} = {60CB1962-5996-4B7F-8734-5097297E862E}
+		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C} = {D735F5AF-6C39-4AAB-B8FB-231F1768A2A7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {868B1FA2-1C6D-4CDB-BF78-75203B314A15}
