@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "sozlukapp.api.webapi": "StartDebugging",
+        "sozlukapp.projections.favoriteservice": "StartDebugging",
+        "sozlukapp.projections.userservice": "StartDebugging",
+        "sozlukapp.projections.voteservice": "StartDebugging"
+      }
+    }
+  }
+}

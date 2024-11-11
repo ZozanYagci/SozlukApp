@@ -1,0 +1,41 @@
+version: '3.4'
+
+services:
+  sozlukapp.api.webapi:
+    container_name: c_sozlukappapi
+    image: ${DOCKER_REGISTRY-}sozlukappapiwebapi
+    build:
+      context: .
+      dockerfile: src\Api\WebApi\SozlukApp.Api.WebApi\Dockerfile
+
+  sozlukapp.webapp:
+    container_name: c_sozlukapwebapp
+    image: ${DOCKER_REGISTRY-}sozlukappwebapp
+    build:
+      context: .
+      dockerfile: src\Api\WebApi\SozlukApp.WebApp\Dockerfile
+
+
+  sozlukapp.projections.favoriteservice:
+    container_name: c_sozlukappfavorite
+    image: ${DOCKER_REGISTRY-}sozlukappprojectionsfavoriteservice
+    build:
+      context: .
+      dockerfile: src\Projections\SozlukApp.Projections.FavoriteService\Dockerfile
+
+
+  sozlukapp.projections.userservice:
+    container_name: c_sozlukappuser
+    image: ${DOCKER_REGISTRY-}sozlukappprojectionsuserservice
+    build:
+      context: .
+      dockerfile: src\Projections\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService\Dockerfile
+
+
+  sozlukapp.projections.voteservice:
+    container_name: c_sozlukappvote
+    image: ${DOCKER_REGISTRY-}sozlukappprojectionsvoteservice
+    build:
+      context: .
+      dockerfile: src\Projections\SozlukApp.Projections.VoteService\Dockerfile
+

@@ -37,7 +37,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Projections.VoteS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.WebApp", "src\Clients\BlazorWeb\SozlukApp.WebApp\SozlukApp.WebApp.csproj", "{9F1BEC03-EA68-4C0B-90C2-CDFC391CD351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SozlukApp.Projections.UserService", "src\Projections\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService.csproj", "{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SozlukApp.Projections.UserService", "src\Projections\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService\SozlukApp.Projections.UserService.csproj", "{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1890D4C4-49D5-4058-8B61-8CE2DFEACF92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6AB636DF-0CB1-435F-8392-49524BD5FEB2}"
+	ProjectSection(SolutionItems) = preProject
+		DockerComposeSteps_External.txt = DockerComposeSteps_External.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +88,10 @@ Global
 		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E2F1CD-8C9A-425B-B26C-058CB9AEBC0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1890D4C4-49D5-4058-8B61-8CE2DFEACF92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1890D4C4-49D5-4058-8B61-8CE2DFEACF92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1890D4C4-49D5-4058-8B61-8CE2DFEACF92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1890D4C4-49D5-4058-8B61-8CE2DFEACF92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
